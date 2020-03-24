@@ -1,0 +1,8 @@
+<ion-content [fullscreen]="true">
+  <div id="container">
+    <app-facts
+      [facts]="this.data.facts"
+      (choiceMade)="logChoice($event)"
+    ></app-facts>
+  </div>
+</ion-content>

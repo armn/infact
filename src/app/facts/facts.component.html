@@ -1,0 +1,152 @@
+<div [class]="'fact list-' + view">
+  <div class="fact--actions">
+    <ion-button (click)="toggleView()" fill="clear">
+      <ion-icon
+        slot="icon-only"
+        [name]="view ? 'albums' : 'list'"
+        size="large"
+        color="dark"
+      ></ion-icon>
+    </ion-button>
+  </div>
+
+  <div class="fact--categories">
+    <ion-chip color="primary" (click)="applyFilter('')">
+      <ion-label color="dark">All</ion-label>
+    </ion-chip>
+    <ion-chip color="primary" (click)="applyFilter('protect')">
+      <ion-label color="dark">Protect yourself</ion-label>
+    </ion-chip>
+    <ion-chip color="primary" (click)="applyFilter('statistics')">
+      <ion-label color="dark">Statistics</ion-label>
+    </ion-chip>
+
+    <ion-chip color="primary" (click)="applyFilter('statistics')">
+      <ion-label color="dark">Economics</ion-label>
+    </ion-chip>
+  </div>
+
+  <div class="fact--status">
+    <div></div>
+
+    <div></div>
+  </div>
+
+  <div
+    class="fact--cards"
+    (pan)="handlePan($event, view)"
+    (panend)="handlePanEnd($event, view)"
+  >
+    <div
+      #factCard
+      class="fact--card"
+      *ngFor="let fact of facts; let i = index"
+      [ngStyle]="{
+        zIndex: facts.length - i,
+        transform: 'scale(' + (20 - i) / 20 + ') translateY(-' + 20 * i + 'px)'
+      }"
+      (transitionend)="handleShift()"
+    >
+      <!-- <div class="category">{{ fact.category }}</div> -->
+      <h1 class="fact-title">{{ fact.title }}</h1>
+
+      <div class="source">
+        <div class="share">
+          <div class="share--desktop">
+            <!-- <ion-button
+              (click)="shareTwitter(fact)"
+              shape="round"
+              color="primary"
+              size="large"
+              fill="clear"
+              class="ion-no-padding"
+            >
+              <ion-icon slot="start" name="share-social" mode="ios"></ion-icon>
+               {{ "SHARE" | translate }}
+            </ion-button> -->
+            <!-- <a
+              href="https://twitter.com/share?ref_src=twsrc%5Etfw"
+              class="twitter-share-button"
+              data-text="Test"
+              data-url="https://infact.lv"
+              data-dnt="true"
+              data-show-count="false"
+              >Tweet</a
+            > -->
+
+            <a
+              href="http://twitter.com/share?text={{
+                fact.title + ' https://infact.lv'
+              }}&url='https://infact.lv'"
+              target="_blank"
+              ><ion-icon slot="start" name="logo-twitter"></ion-icon
+            ></a>
+
+            <!-- <a id="facebook" href="https://www.facebook.com/sharer/sharer.php?u={{url absolute='true'}}">Facebook</a>  -->
+          </div>
+
+          <ion-button
+            (click)="shareFact(fact)"
+            shape="round"
+            color="primary"
+            size="large"
+            fill="clear"
+            class="ion-no-padding share--mobile"
+          >
+            <ion-icon slot="start" name="share-social" mode="ios"></ion-icon>
+            <!-- {{ "SHARE" | translate }} -->
+          </ion-button>
+        </div>
+        <ion-button
+          [href]="fact.url"
+          target="_blank"
+          fill="clear"
+          class="ion-no-padding"
+        >
+          <ion-icon slot="start" name="link" color="black"></ion-icon>
+          {{ "SOURCE" | translate }}
+        </ion-button>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="facts.length == 0">
+    <div class="end">
+      <h1>
+        <!-- {{ "END_TITLE" | translate: { value: this.data.facts.length } }} -->
+        {{ "END_TITLE" | translate }}
+      </h1>
+      <p>{{ "END_TEXT" | translate }}</p>
+      <ion-button (click)="repeat()" expand="block" shape="round">
+        {{ "GO_AGAIN" | translate }}
+      </ion-button>
+    </div>
+  </div>
+
+  <div class="fact--buttons" *ngIf="facts.length && !view">
+    <ion-button
+      (click)="userClickedNext($event)"
+      shape="round"
+      color="primary"
+      size="large"
+    >
+      {{ "NEXT_FACT" | translate }}
+    </ion-button>
+
+    <!-- <ion-button
+      (click)="userClickedButton($event, false)"
+      color="danger"
+      shape="round"
+    >
+      False
+    </ion-button>
+
+    <ion-button
+      (click)="userClickedButton($event, true)"
+      color="success"
+      shape="round"
+    >
+      True
+    </ion-button> -->
+  </div>
+</div>

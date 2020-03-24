@@ -1,0 +1,8 @@
+{
+  "appId": "infact.app",
+  "appName": "InFact",
+  "bundledWebRuntime": false,
+  "npmClient": "npm",
+  "webDir": "www",
+  "cordova": {}
+}

@@ -1,3 +1,55 @@
 <ion-app>
-  <ion-router-outlet></ion-router-outlet>
+  <ion-header [translucent]="true" mode="md">
+    <ion-toolbar>
+      <ion-title>
+        <img
+          src="./assets/infact.svg"
+          alt="InFact"
+          class="logo"
+          routerLink="/"
+        />
+      </ion-title>
+      <ion-buttons slot="secondary">
+        <!-- <ion-button (click)="switchLanguage('en')">
+          Русский
+        </ion-button> -->
+        <ion-button (click)="switchLanguage('en')">
+          English
+        </ion-button>
+        <!-- <ion-button (click)="switchLanguage('lv')">
+          Latviešu
+        </ion-button> -->
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-header>
+
+  <!-- <ion-router-outlet></ion-router-outlet> -->
+
+  <ion-tabs>
+    <ion-tab-bar slot="bottom">
+      <ion-tab-button tab="quiz">
+        <ion-icon name="ribbon"></ion-icon>
+        <ion-label>{{ "QUIZ" | translate }}</ion-label>
+      </ion-tab-button>
+      <ion-tab-button tab="facts">
+        <ion-icon name="shield-checkmark"></ion-icon>
+        <ion-label>{{ "FACTS" | translate }}</ion-label>
+        <ion-badge>{{ this.data.facts.length }}</ion-badge>
+      </ion-tab-button>
+
+      <ion-tab-button tab="home">
+        <ion-icon name="information-circle"></ion-icon>
+        <ion-label>{{ "ABOUT" | translate }}</ion-label>
+      </ion-tab-button>
+
+      <!-- <ion-tab-button tab="about">
+        <ion-icon name="information-circle"></ion-icon>
+        <ion-label>Sources</ion-label>
+      </ion-tab-button>
+      <ion-tab-button tab="about">
+        <ion-icon name="information-circle"></ion-icon>
+        <ion-label>About</ion-label>
+      </ion-tab-button> -->
+    </ion-tab-bar>
+  </ion-tabs>
 </ion-app>

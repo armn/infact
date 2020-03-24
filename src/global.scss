@@ -16,7 +16,7 @@
 @import "~@ionic/angular/css/normalize.css";
 @import "~@ionic/angular/css/structure.css";
 @import "~@ionic/angular/css/typography.css";
-@import '~@ionic/angular/css/display.css';
+@import "~@ionic/angular/css/display.css";
 
 /* Optional CSS utils that can be commented out */
 @import "~@ionic/angular/css/padding.css";
@@ -24,3 +24,75 @@
 @import "~@ionic/angular/css/text-alignment.css";
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
+
+html {
+    font-size: 18px;
+}
+
+@media (max-width: 1024px) {
+    html {
+        font-size: 16px;
+    }
+}
+
+* {
+    font-family: "EB Garamond", serif;
+}
+
+h1 {
+    font-size: 3em;
+}
+
+h2 {
+    font-size: 2.4em;
+}
+
+h3 {
+    font-size: 1.9em;
+}
+
+h4 {
+    font-size: 1.5em;
+}
+
+h5 {
+    font-size: 1.25em;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-weight: 800;
+}
+
+ion-toolbar {
+    background: transparent;
+}
+
+.container {
+    padding-top: 70px;
+}
+
+.header-md:after,
+.header-ios:after {
+    display: none;
+}
+
+.logo {
+    height: 35px;
+    vertical-align: bottom;
+}
+
+.logo--inline {
+    display: inline-block;
+    vertical-align: middle;
+    height: 40px;
+}
+
+ion-button {
+    text-transform: none;
+    font-weight: bold;
+}

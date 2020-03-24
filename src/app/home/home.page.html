@@ -1,20 +1,80 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Blank
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
+<ion-content>
+  <div class="container ion-padding ion-text-center">
+    <h1>
+      {{ 'WELCOME_TO' | translate }}
+      <img src="./assets/infact.svg" alt="InFact" class="logo--inline" />
+    </h1>
+    <h5>{{ 'INTRO_TEXT' | translate}}</h5>
+    <ion-button
+      routerLink="/facts"
+      shape="round"
+      size="large"
+      class="ion-margin"
+    >
+      {{ 'GO_TO_FACTS' | translate }}
+    </ion-button>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
+    <h2>{{ 'SOURCES' | translate}}</h2>
+    <ul class="ion-text-left">
+      <li>
+        <a href="https://www.who.int/" target="_blank"
+          >World Health Organisation</a
+        >
+      </li>
+      <li>
+        <a href="https://spkc.gov.lv/lv/" target="_blank"
+          >Slimību Profilakses un Kontroles Centrs</a
+        >
+      </li>
+      <li>
+        <a
+          href="https://www.cdc.gov/coronavirus/2019-ncov/index.html"
+          target="_blank"
+          >Centers For Disease Control and Prevention</a
+        >
+      </li>
+      <li>
+        <a href="http://www.centerforhealthsecurity.org/" target="_blank"
+          >The John Hopkins Center for Health Security</a
+        >
+      </li>
+      <li>
+        <a href="https://www.harvard.edu/coronavirus" target="_blank"
+          >Harvard University</a
+        >
+      </li>
+      <li>
+        <a href="http://www.vm.gov.lv/en/" target="_blank"
+          >Latvijas Veselības Ministrija</a
+        >
+      </li>
+      <li>
+        <a href="https://www.ecdc.europa.eu/en" target="_blank"
+          >European Centre for Disease Prevention and Control</a
+        >
+      </li>
+    </ul>
+    <h2>{{ 'ABOUT_US' | translate }}</h2>
+    <p>
+      {{ 'ABOUT_US_TEXT' | translate }}
+    </p>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+    <!-- <h2>{{ 'PARTNERS' | translate }}</h2>
+    <p></p> -->
   </div>
 </ion-content>
+
+<!-- <ion-footer [translucent]="true">
+  <ion-toolbar>
+    <ion-title class="ion-text-center">
+      <small>
+        <a
+          href="https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=infacts@yahoo.com
+        &lc=US&item_name=Donation+to+InFact&no_note=0&cn=&currency_code=EUR&bn=PP-DonationsBF:btn_donateCC_LG.gif:NonHosted"
+          target="_blank"
+          >Support us</a
+        >
+      </small>
+    </ion-title>
+  </ion-toolbar>
+</ion-footer> -->

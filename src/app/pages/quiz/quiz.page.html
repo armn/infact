@@ -1,0 +1,97 @@
+<div class="fact">
+  <div class="fact--actions"></div>
+
+  <!-- <div class="fact--status">
+    <div [style.opacity]="heartVisible? '1':'0'">
+      <ion-text color="success">
+        <h1>Correct!</h1>
+      </ion-text>
+    </div>
+
+    <div [style.opacity]="crossVisible? '1':'0'">
+      <ion-text color="danger">
+        <h1>Incorrect.</h1>
+      </ion-text>
+    </div>
+  </div> -->
+
+  <div class="fact--cards">
+    <div
+      #factCard
+      class="fact--card"
+      *ngFor="let fact of facts; let i = index"
+      [ngStyle]="{
+        zIndex: facts.length - i,
+        transform: 'scale(' + (20 - i) / 20 + ') translateY(-' + 20 * i + 'px)'
+      }"
+    >
+      <!-- <div class="category">{{ fact.category }}</div> -->
+      <h1 class="fact-title">{{ fact.title }}</h1>
+      <h3 class="fact-correct" *ngIf="answerVisible" [@inOutAnimation]>
+        {{ 'THIS_IS' | translate }} {{ fact.correct ? "true" : "false" |
+        translate }}.
+      </h3>
+
+      <div class="explanation" *ngIf="answerVisible" [@inOutAnimation]>
+        <p>{{fact.explanation}}</p>
+        <h4>{{"YOU_WERE" | translate}}</h4>
+        <div *ngIf="heartVisible">
+          <ion-text color="success">
+            <h3 class="answer">{{ "CORRECT" | translate }}</h3>
+          </ion-text>
+        </div>
+
+        <div *ngIf="crossVisible">
+          <ion-text color="danger">
+            <h3 class="answer">{{ "INCORRECT" | translate }}</h3>
+          </ion-text>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="!facts.length">
+    <div class="end">
+      <h1>
+        <!-- {{ "END_TITLE" | translate: { value: this.data.facts.length } }} -->
+        {{ "QUIZ_TITLE" | translate }}
+      </h1>
+      <p>{{ "QUIZ_TEXT" | translate }}</p>
+      <ion-button (click)="repeat()" expand="block" shape="round">
+        {{ "GO_AGAIN" | translate }}
+      </ion-button>
+    </div>
+  </div>
+
+  <div class="fact--buttons" *ngIf="facts.length">
+    <ion-button
+      (click)="userClickedButton($event, false)"
+      color="danger"
+      shape="round"
+      size="large"
+      *ngIf="!answerVisible"
+    >
+      {{ "FALSE" | translate }}
+    </ion-button>
+
+    <ion-button
+      (click)="userClickedButton($event, true)"
+      color="success"
+      shape="round"
+      size="large"
+      *ngIf="!answerVisible"
+    >
+      {{ "TRUE" | translate}}
+    </ion-button>
+
+    <ion-button
+      (click)="userClickedNext($event)"
+      color="primary"
+      shape="round"
+      size="large"
+      *ngIf="answerVisible"
+    >
+      {{ "NEXT" | translate}}
+    </ion-button>
+  </div>
+</div>
